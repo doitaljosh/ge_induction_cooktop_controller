@@ -9,4 +9,4 @@ It's still very much a work-in-progress, so expect it to behave inconsistently o
 - Tie the personality pin high if you are controlling a 36 inch cooktop with 5 coils and 3 generator boards.
 - To connect to the single-wire half-duplex serial bus the generator boards use, connect a bus transceiver. Refer to the following for design tips: https://github.com/wfang2002/Full-Half-Duplex-Adapter
 
-## Note: you MUST use an Arduino-compatible board that supports at least two hardware serial busses, or change Serial or Serial2 to use SoftwareSerial.
+#### Note: you MUST use an Arduino-compatible board that supports at least two hardware serial busses, or change Serial or Serial2 to use SoftwareSerial.
