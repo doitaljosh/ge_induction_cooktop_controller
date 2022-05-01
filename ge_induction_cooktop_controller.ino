@@ -24,14 +24,18 @@
  * GPIO pin configuration. Change these to match your board!
  */
 
-int heartbeatLed = 2; // Toggles every time the heartbeat increments
+int heartbeatLed = 2; //        Toggles every time the heartbeat increments
 
-int pot1Pin = 25; // Rear left burner control knob
-int pot2Pin = 26; // Front left burner control knob
-int pot3Pin = 34; // Center burner control knob
-int pot4Pin = 35; // Front right burner control knob
-int pot5Pin = 32; // Rear right burner control knob
-int personalitySelPin = 33; // 0: 4 burners, 1: 5 burners
+int pot1Pin = 25; //            Rear left burner control knob
+int pot2Pin = 26; //            Front left burner control knob
+int pot3Pin = 34; //            Center burner control knob
+int pot4Pin = 35; //            Front right burner control knob
+int pot5Pin = 32; //            Rear right burner control knob
+int personalitySelPin = 33; //  Personality select (0: 4 burners, 1: 5 burners)
+
+int dlbRelayCtrlPin = 27; //    Double line break relay control output
+int fanLowPin = 23; //          Low speed cooling fan output
+int fanHighPin = 22; //         High speed cooling fan output
 
 int potPins[5] = {pot1Pin, pot2Pin, pot3Pin, pot4Pin, pot5Pin};
 
@@ -276,6 +280,11 @@ int setPowerLevels(uint8_t address, uint8_t coil1Level, uint8_t coil2Level, uint
  */
 int initCooktop(int personality) {
   PersonalityId personalityName = (PersonalityId)personality;
+
+  digitalWrite(dlbRelayCtrlPin, HIGH); // Turn on power to the generator boards
+  digitalWrite(fanLowPin, HIGH); // Turn on the cooling fan
+
+  delay(1000); // Allow generator firmware time to boot
   
   switch(personalityName) {
     case PERSONALITY_FOUR_COILS:
@@ -323,6 +332,9 @@ void setup() {
   }
   pinMode(personalitySelPin, INPUT);
   pinMode(heartbeatLed, OUTPUT);
+  pinMode(dlbRelayCtrlPin, OUTPUT);
+  pinMode(fanLowPin, OUTPUT);
+  pinMode(fanHighPin, OUTPUT);
 
   int personality;
 
