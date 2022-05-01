@@ -357,7 +357,7 @@ void loop() {
     
     Serial.print("Power levels: ");
 
-    for(int i=0; i<=5; i++) {
+    for(int i=0; i<5; i++) {
       potValues[i] = map(analogRead(potPins[i]), 41, 4095, minPowerSteps, maxPowerSteps);
       Serial.print(potValues[i]);
       Serial.print(" ");
