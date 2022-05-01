@@ -380,12 +380,12 @@ void loop() {
     switch(numberOfCoils) {
       case 4:
         setPowerLevels(GEN1_ADDR, potValues[0], potValues[1], heartbeat);
-        setPowerLevels(GEN2_ADDR, potValues[2], potValues[3], heartbeat);
+        setPowerLevels(GEN2_ADDR, potValues[3], potValues[4], heartbeat);
         break;
       case 5:
         setPowerLevels(GEN1_ADDR, potValues[0], potValues[1], heartbeat);
-        setPowerLevels(GEN2_ADDR, potValues[4], 0, heartbeat);
-        setPowerLevels(GEN3_ADDR, potValues[2], potValues[3], heartbeat);
+        setPowerLevels(GEN2_ADDR, potValues[2], 0, heartbeat);
+        setPowerLevels(GEN3_ADDR, potValues[3], potValues[4], heartbeat);
         break;
     }
 
